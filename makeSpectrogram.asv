@@ -1,0 +1,15 @@
+function [outputArg1,outputArg2] = makeSpectrogram(speech_data,inputArg2)
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+window = hamming(512);
+N_overlap = 256;
+N_fft = 1024;
+[S,F,P,T] = spectrogram(speech_data,window,N_overlap,N_fft,44100,'yaxis');
+figure;
+surf(T,F,10*log10(P),'EdgeColor','none');
+axis tight;
+view(0,90);
+colormap(jet);
+set(gca,'clim',[])
+
+end
