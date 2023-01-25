@@ -14,7 +14,7 @@ player = audioplayer(recorder,2);
 playblocking(player,recordLength);
 
 recording = getaudiodata(recorder);
-audiowrite('recording1.wav',recording,44100);
+audiowrite('recording1',recording,44100)
 
 makeSpectrogram(recording);
 
