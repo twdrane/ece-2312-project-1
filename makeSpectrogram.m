@@ -6,7 +6,7 @@ N_overlap = 256;
 N_fft = 1024;
 [S,F,P,T] = spectrogram(speech_data,window,N_overlap,N_fft,44100,'yaxis');
 figure;
-surf(T,F,10*log10(P),'edgecolor','none');
+surf(T,F,10*log(P),'edgecolor','none');
 axis tight;
 view(0,90);
 colormap(jet);
