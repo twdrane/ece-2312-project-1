@@ -1,10 +1,11 @@
-function makeSpectrogram(speech_data)
-% A function to create a spectrogram of a recording of 
-%   
+function makeSpectrogram(audio_data)
+
+% A function to create a spectrogram of an audio recording
+
 window = hamming(512);
 N_overlap = 256;
 N_fft = 1024;
-[S,F,T,P] = spectrogram(speech_data,window,N_overlap,N_fft,44100,'yaxis');
+[~,F,T,P] = spectrogram(audio_data,window,N_overlap,N_fft,44100,'yaxis');
 figure;
 surf(T,F,10*log10(P),'edgecolor','none');
 axis tight;
