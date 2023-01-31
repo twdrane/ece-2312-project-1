@@ -7,25 +7,35 @@ audiodevinfo(0,2); %verify speaker
 recorder = audiorecorder(44100,24,1,0); %create audio recording object, 44100Hz, 24bit, mono or stereo, 0(default microphone)
 disp('Start recording')
 
+%% comment the line below for audio file playback
 %recordblocking(recorder,recordLength); %record for recordLength seconds
 
 disp('Recording finished. Playing back')
 
+%% comment through line 22 for recording playback
 [audioFile,Fs] = audioread('ivorybuckles.wav'); %read audio file
-emptyChannel = zeros([220500,1]);
+
+%the next 2 lines convert the audio to one sided stereo
+emptyChannel = zeros([220500,1]); 
 audioFile = cat(2,audioFile,emptyChannel);
+
 player = audioplayer(audioFile,Fs,24,2); %create playback object from a previously recorded file
 
+%% comment the line below for audio file playback
 %player = audioplayer(recorder,2); %create playback object from recording object
 
 playblocking(player,recordLength); %playback recorded sample
 disp('Done')
 
+%% comment these lines for audio file playback
 %recording = getaudiodata(recorder); %convert recorder object into an audio file
 %audiowrite('recording1.wav',recording,44100);
 
+%% pick the graph for the desired output, do not use during stereo
 %makeSpectrogram(recording); %graph recorded audio as a spectrogram
 %makeSpectrogram(audioFile); %graph audio file as a spectrogram
+
+%%
 
 function makeSpectrogram(audio_data)
 
