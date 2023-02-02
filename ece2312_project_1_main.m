@@ -8,13 +8,13 @@ audiodevinfo(0,2); %verify speaker
 recorder = audiorecorder(44100,24,1,0); %create audio recording object, 44100Hz, 24bit, mono or stereo, 0(default microphone)
 disp('Start recording')
 recordblocking(recorder,recordLength); %record for recordLength seconds
-disp('Recording finished.')
+disp('Recording finished')
 
 %% comment through line 18 for recording playback
 % [audioFile,Fs] = audioread('ivorybuckles.wav'); %read audio file
 % %the next 2 lines convert the audio to one sided stereo, comment calls for makeSpectrogram
-% emptyChannel = zeros([220500,1]); 
-% audioFile = cat(2,audioFile,emptyChannel);
+% %emptyChannel = zeros([220500,1]); 
+% %audioFile = cat(2,audioFile,emptyChannel);
 % player = audioplayer(audioFile,Fs,24,2); %create playback object from a previously recorded file
 
 %% comment the line below for audio file playback
@@ -57,6 +57,6 @@ view(0,90);
 colormap(jet);
 set(gca,'clim',[-80,-20]);
 ylim([0 8000]);
-xlabel('Time (s)');ylabel('Frequency (Hz)');
+title('Spectrogram');xlabel('Time (s)');ylabel('Frequency (Hz)');
 
 end
